@@ -12,25 +12,75 @@ body {
 }
 
 .tile {
-  background-color: burlywood;
+  background-color: #bfbfbf;
   border-radius: 10px;
   border: 1px solid rgb(86, 86, 86);
   height: 5rem;
   width: 5rem;
 }
+.content .active {
+  background-color: white;
+}
+
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: #67c6b0;
   border: 1px solid black;
   border-radius: 10px;
+  padding: 2em;
 }
 
+.top {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 2em;
+}
+.score {
+  display: flex;
+  border: 1px solid black;
+  padding: 0.3em;
+  /* height: 80%; */
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 2.5em;
+}
+.scoreboard {
+  margin-inline: 0.3em;
+}
+.p1 {
+  background-color: #238090;
+  color: white;
+}
+.draw {
+  background-color: #1fc54e;
+  color: white;
+}
+.p2 {
+  background-color: #ea5454;
+  color: white;
+}
 .content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   justify-items: center;
   align-items: center;
+  gap: 0.5em;
+}
+.scoreboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* background-color: darkcyan; */
+}
+
+label {
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 0.4em;
 }
