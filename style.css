@@ -41,14 +41,22 @@ main {
 .score {
   display: flex;
   border: 1px solid black;
-  padding: 0.3em;
-  /* height: 80%; */
+  height: 5rem;
+  width: 5rem;
   border-radius: 10px;
   font-weight: bold;
   font-size: 2.5em;
+  align-items: center;
+  justify-content: center;
 }
 .scoreboard {
-  margin-inline: 0.3em;
+  margin-inline: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* background-color: darkcyan; */
 }
 .p1 {
   background-color: #238090;
@@ -69,14 +77,6 @@ main {
   justify-items: center;
   align-items: center;
   gap: 0.5em;
-}
-.scoreboard {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  /* background-color: darkcyan; */
 }
 
 label {
