@@ -64,8 +64,9 @@ function checkWin() {
   if (!winnerFound && board.every((data) => data !== "")) {
     {
       drawScore.textContent = Number(drawScore.textContent) + 1;
-      resetGame();
+      winnerFound = true;
       gameRunning = false;
+      resetGame();
     }
   }
 }
@@ -78,6 +79,7 @@ function resetGame() {
       tile.innerHTML = "";
       tile.classList.remove("active");
       gameRunning = true;
+      winnerFound = false;
     });
   }, 100);
 }
