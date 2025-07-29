@@ -29,6 +29,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 @keyframes flip {
@@ -111,4 +112,15 @@ label {
   font-weight: bold;
   color: #000000;
   margin-bottom: 0.4em;
+}
+.resetScoreboard {
+  padding: 0.5em 1em;
+  margin-top: 1.5em;
+  font-weight: bolder;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 100px;
+  box-shadow: 2px 3px 20px 0.1px black;
+  cursor: pointer;
 }

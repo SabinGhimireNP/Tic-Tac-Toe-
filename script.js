@@ -2,6 +2,8 @@ const tiles = document.querySelectorAll(".tile");
 const p1Score = document.querySelector(".p1");
 const p2Score = document.querySelector(".p2");
 const drawScore = document.querySelector(".draw");
+const resetScore = document.querySelector(".resetScoreboard");
+
 const winaudio = new Audio("assests/page-flip-47177.mp3");
 const rewindaudio = new Audio("assests/rewind.mp3");
 let board = ["", "", "", "", "", "", "", "", ""];
@@ -83,7 +85,13 @@ function resetGame() {
     });
   }, 100);
 }
+function resetScoreboard() {
+  drawScore.textContent = 0;
+  p2Score.textContent = 0;
+  p1Score.textContent = 0;
+}
 
+resetScore.addEventListener("click", resetScoreboard);
 tiles.forEach((tile) =>
   tile.addEventListener("click", (e) => contentChange(e, tile))
 );
