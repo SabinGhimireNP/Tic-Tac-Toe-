@@ -26,6 +26,9 @@ body {
   height: 5rem;
   width: 5rem;
   transition: transform 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes flip {
@@ -44,6 +47,7 @@ body {
   animation: flip 0.5s ease-in;
   background-color: white;
   transition: background-color 0.3s 0.4s;
+  font-size: 3em;
 }
 
 main {
@@ -82,7 +86,7 @@ main {
   text-align: center;
   /* background-color: darkcyan; */
 }
-.p1 {
+.p2 {
   background-color: #238090;
   color: white;
 }
@@ -90,7 +94,7 @@ main {
   background-color: #1fc54e;
   color: white;
 }
-.p2 {
+.p1 {
   background-color: #ea5454;
   color: white;
 }
