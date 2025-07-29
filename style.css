@@ -2,6 +2,12 @@
   margin: 0;
   padding: 0;
 }
+:root {
+  --player1: #ea5454;
+  --player2: #238090;
+  --draw: #1fc54e;
+  --background: #67c6b0;
+}
 
 body {
   display: flex;
@@ -56,7 +62,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #67c6b0;
+  background-color: var(--background);
   border: 1px solid black;
   border-radius: 10px;
   padding: 2em;
@@ -88,15 +94,15 @@ main {
   /* background-color: darkcyan; */
 }
 .p2 {
-  background-color: #238090;
+  background-color: var(--player2);
   color: white;
 }
 .draw {
-  background-color: #1fc54e;
+  background-color: var(--draw);
   color: white;
 }
 .p1 {
-  background-color: #ea5454;
+  background-color: var(--player1);
   color: white;
 }
 .content {
