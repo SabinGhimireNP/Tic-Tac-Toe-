@@ -6,6 +6,9 @@ const resetScore = document.querySelector(".resetScoreboard");
 
 const winaudio = new Audio("assests/page-flip-47177.mp3");
 const rewindaudio = new Audio("assests/rewind.mp3");
+const Incresemeter = new Audio("assests/Incresemeter.mp3");
+const resetemeter = new Audio("assests/reset.mp3");
+
 let board = ["", "", "", "", "", "", "", "", ""];
 const winslots = [
   [0, 1, 2],
@@ -18,8 +21,11 @@ const winslots = [
   [2, 4, 6],
 ];
 let gameRunning = true;
+
 winaudio.volume = 0.04;
 rewindaudio.volume = 0.1;
+Incresemeter.volume = 0.05;
+resetemeter.volume = 0.1;
 
 let winnerFound = false;
 let player1 = Math.round(Math.random());
@@ -53,10 +59,12 @@ function checkWin() {
       winnerFound = true;
       if (board[winslot[2]] === "X") {
         gameRunning = false;
+        Incresemeter.play();
         p1Score.textContent = Number(p1Score.textContent) + 1;
         resetGame();
       }
       if (board[winslot[2]] === "O") {
+        Incresemeter.play();
         p2Score.textContent = Number(p2Score.textContent) + 1;
         gameRunning = false;
         resetGame();
@@ -65,6 +73,7 @@ function checkWin() {
   });
   if (!winnerFound && board.every((data) => data !== "")) {
     {
+      Incresemeter.play();
       drawScore.textContent = Number(drawScore.textContent) + 1;
       winnerFound = true;
       gameRunning = false;
@@ -86,6 +95,9 @@ function resetGame() {
   }, 100);
 }
 function resetScoreboard() {
+  resetemeter.currentTime = 0;
+  resetemeter.playbackRate = 2;
+  resetemeter.play();
   drawScore.textContent = 0;
   p2Score.textContent = 0;
   p1Score.textContent = 0;
