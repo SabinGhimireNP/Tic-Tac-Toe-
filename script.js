@@ -1,13 +1,9 @@
+//variables
 const tiles = document.querySelectorAll(".tile");
 const p1Score = document.querySelector(".p1");
 const p2Score = document.querySelector(".p2");
 const drawScore = document.querySelector(".draw");
 const resetScore = document.querySelector(".resetScoreboard");
-
-const winaudio = new Audio("assests/page-flip-47177.mp3");
-const Incresemeter = new Audio("assests/Incresemeter.mp3");
-const resetemeter = new Audio("assests/reset.mp3");
-
 let board = ["", "", "", "", "", "", "", "", ""];
 const winslots = [
   [0, 1, 2],
@@ -21,12 +17,20 @@ const winslots = [
 ];
 let gameRunning = true;
 
+//audio variables
+const winaudio = new Audio("assests/page-flip-47177.mp3");
+const Incresemeter = new Audio("assests/Incresemeter.mp3");
+const resetemeter = new Audio("assests/reset.mp3");
+
+//audion controls
 winaudio.volume = 0.04;
 Incresemeter.volume = 0.04;
 resetemeter.volume = 0.1;
 
 let winnerFound = false;
 let player1 = Math.round(Math.random());
+
+//functions
 function contentChange(e, tile) {
   winaudio.currentTime = 0;
 
@@ -100,6 +104,7 @@ function resetScoreboard() {
   p1Score.textContent = 0;
 }
 
+//eventListners
 resetScore.addEventListener("click", resetScoreboard);
 tiles.forEach((tile) =>
   tile.addEventListener("click", (e) => contentChange(e, tile))
