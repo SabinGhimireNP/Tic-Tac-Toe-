@@ -1,5 +1,15 @@
 const tiles = document.querySelectorAll(".tile");
 const board = ["", "", "", "", "", "", "", "", ""];
+const winslots = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+];
 let player1 = Math.round(Math.random());
 function contentChange(e, tile) {
   e.target.classList.add("active");
@@ -14,8 +24,10 @@ function contentChange(e, tile) {
       player1 = !player1;
     }
   }, 300);
+  checkWin();
 }
 
+function checkWin() {}
 tiles.forEach((tile) =>
   tile.addEventListener("click", (e) => contentChange(e, tile))
 );
