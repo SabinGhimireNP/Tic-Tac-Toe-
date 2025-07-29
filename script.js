@@ -1,5 +1,8 @@
 const tiles = document.querySelectorAll(".tile");
 const board = ["", "", "", "", "", "", "", "", ""];
+const p1Score = document.querySelector(".p1");
+const p2Score = document.querySelector(".p2");
+const drawScore = document.querySelector(".draw");
 const winslots = [
   [0, 1, 2],
   [3, 4, 5],
@@ -10,6 +13,8 @@ const winslots = [
   [0, 4, 8],
   [2, 4, 6],
 ];
+console.log(drawScore.textContent, p1Score.textContent, p2Score.textContent);
+let winnerFound = false;
 let player1 = Math.round(Math.random());
 function contentChange(e, tile) {
   e.target.classList.add("active");
@@ -22,12 +27,39 @@ function contentChange(e, tile) {
       let currentPlayer = player1 ? "X" : "O";
       board[index] = currentPlayer;
       player1 = !player1;
+      checkWin();
     }
   }, 300);
-  checkWin();
 }
 
-function checkWin() {}
+function checkWin() {
+  winslots.forEach((winslot) => {
+    if (
+      board[winslot[0]] === board[winslot[1]] &&
+      board[winslot[2]] === board[winslot[1]] &&
+      board[winslot[0]] !== ""
+    ) {
+      winnerFound = true;
+      if (board[winslot[2]] === "X") {
+        p1Score.textContent = p1Score.textContent + 1;
+        resetGame();
+      }
+      if (board[winslot[2]] === "O") {
+        p2Score.textContent = p2Score.textContent + 1;
+        resetGame();
+      }
+    }
+  });
+  if (!winnerFound && board.every((data) => !data == "")) {
+    {
+      drawScore.textContent = drawScore.textContent + 1;
+      resetGame();
+    }
+  }
+}
+
+
+
 tiles.forEach((tile) =>
   tile.addEventListener("click", (e) => contentChange(e, tile))
 );
