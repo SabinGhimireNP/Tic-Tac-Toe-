@@ -2,6 +2,8 @@ const tiles = document.querySelectorAll(".tile");
 const p1Score = document.querySelector(".p1");
 const p2Score = document.querySelector(".p2");
 const drawScore = document.querySelector(".draw");
+const winaudio = new Audio("assests/page-flip-47177.mp3");
+const rewindaudio = new Audio("assests/rewind.mp3");
 let board = ["", "", "", "", "", "", "", "", ""];
 const winslots = [
   [0, 1, 2],
@@ -14,15 +16,20 @@ const winslots = [
   [2, 4, 6],
 ];
 let gameRunning = true;
-console.log(drawScore.textContent, p1Score.textContent, p2Score.textContent);
+winaudio.volume = 0.04;
+rewindaudio.volume = 0.1;
+
 let winnerFound = false;
 let player1 = Math.round(Math.random());
 function contentChange(e, tile) {
-  if (!gameRunning) return;
-  e.target.classList.add("active");
-  let index = e.target.dataset.set - 1;
-  setTimeout(() => {
-    if (!tile.innerHTML) {
+  winaudio.currentTime = 0;
+
+  if (!tile.innerHTML) {
+    if (!gameRunning) return;
+    winaudio.play();
+    e.target.classList.add("active");
+    let index = e.target.dataset.set - 1;
+    setTimeout(() => {
       tile.innerHTML = player1
         ? `<i class="fa-solid fa-xmark" style="color: #ea5454;"></i>`
         : `<i class="fa-regular fa-circle" style="color: #238090;"></i>`;
@@ -30,8 +37,8 @@ function contentChange(e, tile) {
       board[index] = currentPlayer;
       player1 = !player1;
       checkWin();
-    }
-  }, 300);
+    }, 300);
+  }
 }
 
 function checkWin() {
@@ -54,16 +61,17 @@ function checkWin() {
       }
     }
   });
-  if (!winnerFound && board.every((data) => !data == "")) {
+  if (!winnerFound && board.every((data) => data !== "")) {
     {
       drawScore.textContent = Number(drawScore.textContent) + 1;
-      gameRunning = false;
       resetGame();
+      gameRunning = false;
     }
   }
 }
 
 function resetGame() {
+  rewindaudio.play();
   setTimeout(() => {
     board = ["", "", "", "", "", "", "", "", ""];
     tiles.forEach((tile) => {
@@ -71,7 +79,7 @@ function resetGame() {
       tile.classList.remove("active");
       gameRunning = true;
     });
-  }, 500);
+  }, 100);
 }
 
 tiles.forEach((tile) =>
