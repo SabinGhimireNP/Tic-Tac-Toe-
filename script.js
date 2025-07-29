@@ -5,7 +5,6 @@ const drawScore = document.querySelector(".draw");
 const resetScore = document.querySelector(".resetScoreboard");
 
 const winaudio = new Audio("assests/page-flip-47177.mp3");
-const rewindaudio = new Audio("assests/rewind.mp3");
 const Incresemeter = new Audio("assests/Incresemeter.mp3");
 const resetemeter = new Audio("assests/reset.mp3");
 
@@ -23,8 +22,7 @@ const winslots = [
 let gameRunning = true;
 
 winaudio.volume = 0.04;
-rewindaudio.volume = 0.1;
-Incresemeter.volume = 0.05;
+Incresemeter.volume = 0.04;
 resetemeter.volume = 0.1;
 
 let winnerFound = false;
@@ -39,8 +37,8 @@ function contentChange(e, tile) {
     let index = e.target.dataset.set - 1;
     setTimeout(() => {
       tile.innerHTML = player1
-        ? `<i class="fa-solid fa-xmark" style="color: #ea5454;"></i>`
-        : `<i class="fa-regular fa-circle" style="color: #238090;"></i>`;
+        ? `<i class="fa-solid fa-xmark" style="color: var(--player1);"></i>`
+        : `<i class="fa-regular fa-circle" style="color: var(--player2);"></i>`;
       let currentPlayer = player1 ? "X" : "O";
       board[index] = currentPlayer;
       player1 = !player1;
@@ -83,7 +81,6 @@ function checkWin() {
 }
 
 function resetGame() {
-  rewindaudio.play();
   setTimeout(() => {
     board = ["", "", "", "", "", "", "", "", ""];
     tiles.forEach((tile) => {
